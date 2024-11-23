@@ -32,10 +32,10 @@ export default function ClientLayout({
   const className = `${geistSans.variable} ${geistMono.variable} antialiased theme-light font-sans`;
 
   return (
-    <div className={className} style={{ colorScheme: "light" }}>
+    <div className={className} style={{ colorScheme: "dark" }}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
+        defaultTheme="dark"
         enableSystem
         disableTransitionOnChange
       >
