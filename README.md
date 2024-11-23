@@ -3,7 +3,7 @@
 </div>
 
 
-# SCHM - Theme-Based Image Converter
+# schm - Theme-Based Image Converter
 
 A Next.js application that converts images to match specific color themes like Gruvbox, Nord, Catppuccin, and more.
 
