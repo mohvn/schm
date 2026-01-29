@@ -2,58 +2,128 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+@font-face {
+  font-family: "Instagram Sans";
+  src: url("/fonts/Instagram Sans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instagram Sans";
+  src: url("/fonts/Instagram Sans Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instagram Sans";
+  src: url("/fonts/Instagram Sans Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instagram Sans";
+  src: url("/fonts/Instagram Sans Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instagram Sans";
+  src: url("/fonts/Instagram Sans Headline.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 210 11.1% 3.53%;
+
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 210 11.1% 3.53%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover-foreground: 210 11.1% 3.53%;
+
     --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
+
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
+
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
+
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
+
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: var(--color-red-700);
+
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    --info: var(--color-blue-500);
+    --info-foreground: var(--color-blue-700);
+    --success: var(--color-emerald-500);
+    --success-foreground: var(--color-emerald-700);
+    --warning: var(--color-amber-500);
+    --warning-foreground: var(--color-amber-700);
+
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
   }
+
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 210 11.1% 3.53%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
+
+    --card: 210 11.1% 3.53%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+
+    --popover: 210 11.1% 3.53%;
     --popover-foreground: 0 0% 98%;
+
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
+
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
+
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
+
     --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
+
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: var(--color-red-400);
+
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
+
+    --info: var(--color-blue-500);
+    --info-foreground: var(--color-blue-400);
+    --success: var(--color-emerald-500);
+    --success-foreground: var(--color-emerald-400);
+    --warning: var(--color-amber-500);
+    --warning-foreground: var(--color-amber-400);
+
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -66,7 +136,164 @@ body {
   * {
     @apply border-border;
   }
+  html {
+    font-family: "Instagram Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
   body {
     @apply bg-background text-foreground;
+    font-family: "Instagram Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .dashed-border {
+    --border-color: #cbcccc;
+    position: relative;
+    isolation: isolate;
+    overflow: visible;
+  }
+
+  body.dashed-border {
+    overflow-x: hidden;
+  }
+
+  .dashed-border::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 100vw;
+    height: 1px;
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--border-color) 0px,
+      var(--border-color) 6px,
+      transparent 6px,
+      transparent 14px
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .dashed-border::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100vw;
+    height: 1px;
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--border-color) 0px,
+      var(--border-color) 6px,
+      transparent 6px,
+      transparent 14px
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .dashed-border {
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        var(--border-color) 0px,
+        var(--border-color) 6px,
+        transparent 6px,
+        transparent 14px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        var(--border-color) 0px,
+        var(--border-color) 6px,
+        transparent 6px,
+        transparent 14px
+      );
+    background-size: 1px 100vh, 1px 100vh;
+    background-position: 0 0, right 0;
+    background-repeat: repeat-y, repeat-y;
+    background-attachment: fixed;
+  }
+
+  body.dashed-border {
+    background-position: 0 0, calc(100vw - 1px) 0;
+  }
+
+  .dashed-border-no-top::before {
+    display: none;
+  }
+
+  .dashed-border-no-bottom::after {
+    display: none;
+  }
+
+  .dashed-border-no-left {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--border-color) 0px,
+      var(--border-color) 6px,
+      transparent 6px,
+      transparent 14px
+    );
+    background-size: 1px 100vh;
+    background-position: right 0 top 0;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+  }
+
+  .dashed-border-no-right {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      var(--border-color) 0px,
+      var(--border-color) 6px,
+      transparent 6px,
+      transparent 14px
+    );
+    background-size: 1px 100vh;
+    background-position: left 0 top 0;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+  }
+
+  .dashed-border-no-top {
+    --border-color: #cbcccc;
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        var(--border-color) 0px,
+        var(--border-color) 6px,
+        transparent 6px,
+        transparent 14px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        var(--border-color) 0px,
+        var(--border-color) 6px,
+        transparent 6px,
+        transparent 14px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        var(--border-color) 0px,
+        var(--border-color) 6px,
+        transparent 6px,
+        transparent 14px
+      );
+    background-size: 100% 1px, 1px 100%, 1px 100%;
+    background-position: bottom, right, left;
+    background-repeat: repeat-x, repeat-y, repeat-y;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .dark .dot-pattern {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
   }
 }

@@ -141,11 +141,12 @@ export default function ImageConverter() {
         <Button
           onClick={applyTheme}
           disabled={!originalImage || !selectedTheme || isLoading}
+          variant="outline"
           className={cn(
-            "w-full font-semibold py-5 rounded-xl transition-all duration-300",
-            "bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black dark:from-gray-200 dark:to-gray-100 dark:hover:from-white dark:hover:to-gray-100",
-            "text-white dark:text-gray-900 shadow-lg shadow-gray-400/30 dark:shadow-gray-900/30",
-            "disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+            "w-full font-semibold py-5 rounded-lg transition-colors duration-200",
+            "border-2 border-dashed border-border bg-muted/80 text-foreground",
+            "hover:bg-muted hover:border-foreground/30",
+            "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-muted/80 disabled:hover:border-border"
           )}
         >
           {isLoading ? "Converting..." : "Apply Theme"}
@@ -169,7 +170,8 @@ export default function ImageConverter() {
             </div>
             <Button
               onClick={downloadImage}
-              className='w-full font-semibold'
+              variant="outline"
+              className="w-full font-semibold border-2 border-dashed border-border bg-muted/80 text-foreground hover:bg-muted hover:border-foreground/30"
             >
               <Download className="mr-2 h-4 w-4" />
               Download Image

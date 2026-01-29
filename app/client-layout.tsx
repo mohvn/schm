@@ -5,11 +5,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -29,13 +24,11 @@ export default function ClientLayout({
 
   if (!themeReady) return null;
 
-  const className = `${geistSans.variable} ${geistMono.variable} antialiased theme-light font-sans`;
-
   return (
-    <div className={className} style={{ colorScheme: "dark" }}>
+    <div className={geistMono.variable}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="dark"
+        defaultTheme="system"
         enableSystem
         disableTransitionOnChange
       >
