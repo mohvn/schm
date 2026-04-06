@@ -71,20 +71,20 @@ export default function ImageConverter() {
     <div className="w-full max-w-3xl mx-auto p-6 space-y-6">
       <div className="space-y-6">
         <div className="flex items-center justify-center w-full">
-          <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl cursor-pointer bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300">
+          <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-border rounded-xl cursor-pointer bg-muted/50 hover:bg-muted hover:border-foreground/40 transition-all duration-300">
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
-              <div className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 mb-3">
-                <Upload strokeWidth={1.5} className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+              <div className="p-3 rounded-full bg-secondary mb-3">
+                <Upload strokeWidth={1.5} className="w-6 h-6 text-muted-foreground" />
               </div>
-              <p className="mb-1 text-sm text-gray-600 dark:text-gray-300"><span className="font-semibold text-gray-800 dark:text-gray-200">Click to upload</span> or drag and drop</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">PNG, JPG or GIF</p>
+              <p className="mb-1 text-sm text-muted-foreground"><span className="font-semibold text-foreground">Click to upload</span> or drag and drop</p>
+              <p className="text-xs text-muted-foreground">PNG, JPG or GIF</p>
             </div>
             <input id="dropzone-file" type="file" className="hidden" onChange={handleImageUpload} accept="image/*" />
           </label>
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">Select a Theme</h3>
+          <h3 className="text-sm font-medium text-foreground">Select a Theme</h3>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {Object.entries(themes).map(([themeName, themeColors]) => {
@@ -99,19 +99,19 @@ export default function ImageConverter() {
                     "relative group p-3 rounded-xl border-2 transition-all duration-300 text-left",
                     "hover:scale-[1.02] hover:shadow-lg",
                     isSelected
-                      ? "border-gray-800 dark:border-gray-200 bg-gray-100 dark:bg-gray-800 shadow-md shadow-gray-300 dark:shadow-gray-900/50"
-                      : "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50 hover:border-gray-300 dark:hover:border-gray-600"
+                      ? "border-foreground bg-muted shadow-md shadow-black/30"
+                      : "border-border bg-card hover:border-muted-foreground/50"
                   )}
                 >
                   {isSelected && (
-                    <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-gray-800 dark:bg-gray-200 rounded-full flex items-center justify-center shadow-md">
-                      <Check className="w-3 h-3 text-white dark:text-gray-900" />
+                    <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-primary rounded-full flex items-center justify-center shadow-md">
+                      <Check className="w-3 h-3 text-primary-foreground" />
                     </div>
                   )}
 
                   <p className={cn(
                     "text-xs font-medium mb-2 truncate",
-                    isSelected ? "text-gray-900 dark:text-gray-100" : "text-gray-700 dark:text-gray-300"
+                    isSelected ? "text-foreground" : "text-muted-foreground"
                   )}>
                     {themeName}
                   </p>
@@ -120,7 +120,7 @@ export default function ImageConverter() {
                     {colors.slice(0, 8).map((color, index) => (
                       <div
                         key={index}
-                        className="w-4 h-4 rounded-sm shadow-sm ring-1 ring-black/5"
+                        className="w-4 h-4 rounded-sm shadow-sm ring-1 ring-foreground/10"
                         style={{ backgroundColor: color }}
                       />
                     ))}
@@ -156,16 +156,16 @@ export default function ImageConverter() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
         {originalImage && (
           <div className="space-y-3">
-            <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">Original Image</h2>
-            <div className="relative rounded-xl overflow-hidden shadow-lg ring-1 ring-black/5">
+            <h2 className="text-sm font-medium text-foreground">Original Image</h2>
+            <div className="relative rounded-xl overflow-hidden shadow-lg ring-1 ring-border">
               <img src={originalImage} alt="Original" className="w-full h-auto" />
             </div>
           </div>
         )}
         {convertedImage && (
           <div className="space-y-3">
-            <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">Converted Image</h2>
-            <div className="relative rounded-xl overflow-hidden shadow-lg ring-1 ring-black/5">
+            <h2 className="text-sm font-medium text-foreground">Converted Image</h2>
+            <div className="relative rounded-xl overflow-hidden shadow-lg ring-1 ring-border">
               <img src={convertedImage} alt="Converted" className="w-full h-auto" />
             </div>
             <Button

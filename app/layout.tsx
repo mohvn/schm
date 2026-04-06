@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import ClientLayout from "./client-layout";
+import localFont from "next/font/local";
+import "./globals.css";
+
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "schm",
@@ -13,8 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans antialiased max-w-[700px] mx-auto flex flex-col gap-4">
-        <ClientLayout>{children}</ClientLayout>
+      <body
+        className={`${geistMono.variable} min-h-screen bg-background font-sans antialiased max-w-[700px] mx-auto flex flex-col gap-4 text-foreground`}
+      >
+        {children}
       </body>
     </html>
   );

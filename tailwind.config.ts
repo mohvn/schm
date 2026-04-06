@@ -1,8 +1,7 @@
 import type { Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
-	darkMode: ["class"],
+	darkMode: false,
 	content: [
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,8 +17,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['"Instagram Sans"', ...fontFamily.sans],
-				mono: ['var(--font-geist-mono)'],
+				sans: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
+				mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
 			},
 			colors: {
 				background: 'hsl(var(--background))',
